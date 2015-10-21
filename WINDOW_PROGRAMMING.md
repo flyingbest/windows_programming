@@ -75,14 +75,14 @@ WndMain 함수는 윈도우 프로그램을 만드는 일을 하는 함수. 함�
 WNDCLASS 구조체는 windows.h 파일에 다음과 같이 정의.
 ```
 typedef struct tagWNDCLASSA {
-	UNIT			style;	//생성하고자 하는 윈도우의 형태(style)를 지정하는 멤버.
-	WNDPROC			lpfnWndProc;	//메시지 처리를 담당하는 함수를 지정하는 멤버.
+	UNIT			style;			//생성하고자 하는 윈도우의 형태(style)를 지정하는 멤버.
+	WNDPROC			lpfnWndProc; //메시지 처리를 담당하는 함수를 지정하는 멤버.
 	int				cbClsExtra;	//예약 영역으로 보통은 사용하지 않는다. 사용하지 않는 경우 0으로 세팅.
 	int				cbWndExtra;	//위와 동일.
 	HINSTANCE		hInstance;	//윈도우 인스턴스 핸들 값을 지정하는 멤버.
-													//WinMain 함수의 인자 값으로 입력된 값을 지정하여 사용.
-	HICON			hIcon;	//프로그램에서 사용할 아이콘을 지정하는 멤버. LoadIcon() 함수 사용.
-	HCURSOR			hCursor;	//프로그램에서 사용할 마우스 커서를 지정하는 멤버. LoadCursor() 함수 사용.
+									//WinMain 함수의 인자 값으로 입력된 값을 지정하여 사용.
+	HICON			hIcon;		//프로그램에서 사용할 아이콘을 지정하는 멤버. LoadIcon() 함수 사용.
+	HCURSOR			hCursor;		//프로그램에서 사용할 마우스 커서를 지정하는 멤버. LoadCursor() 함수 사용.
 	HBRUSH			hbrBackground;	//윈도우의 배경색을 지정하기 위한 멤버.
 	LPCSTR			lpszMenuName;	//프로그램에서 사용할 메뉴를 지정하기 위한 멤버.
 	LPCSTR			lpszClassName;	//윈도우의 클래스 이름을 지정하기 위한 멤버.
@@ -90,5 +90,11 @@ typedef struct tagWNDCLASSA {
 ```
 
 > 윈도우 생성
+
+윈도우 클래스 구조체의 설정이 완료되었다면 설정한 내용의 성격을 갖는 프로그램의 윈도우를 생성해야 한다. 윈도우를 생성하기 위해서는 CreateWindow() 함수를 사용.
+```
+HWND CreateWindow(lpszClassName, lpszWindowName, dwStyle, x, y, nWidth, nHeight,
+				hwndParent, hmenu, hinst, lpvParam)
+```
 
 
