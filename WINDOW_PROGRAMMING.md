@@ -77,9 +77,10 @@ WNDCLASS 구조체는 windows.h 파일에 다음과 같이 정의.
 typedef struct tagWNDCLASSA {
 	UNIT			style;	//생성하고자 하는 윈도우의 형태(style)를 지정하는 멤버.
 	WNDPROC			lpfnWndProc;	//메시지 처리를 담당하는 함수를 지정하는 멤버.
-	int			cbClsExtra;	//예약 영역으로 보통은 사용하지 않는다. 사용하지 않는 경우 0으로 세팅.
-	int			cbWndExtra;	//위와 동일.
-	HINSTANCE			hInstance;	//윈도우 인스턴스 핸들 값을 지정하는 멤버. WinMain 함수의 인자 값으로 입력된 값을 지정하여 사용.
+	int				cbClsExtra;	//예약 영역으로 보통은 사용하지 않는다. 사용하지 않는 경우 0으로 세팅.
+	int				cbWndExtra;	//위와 동일.
+	HINSTANCE		hInstance;	//윈도우 인스턴스 핸들 값을 지정하는 멤버.
+													//WinMain 함수의 인자 값으로 입력된 값을 지정하여 사용.
 	HICON			hIcon;	//프로그램에서 사용할 아이콘을 지정하는 멤버. LoadIcon() 함수 사용.
 	HCURSOR			hCursor;	//프로그램에서 사용할 마우스 커서를 지정하는 멤버. LoadCursor() 함수 사용.
 	HBRUSH			hbrBackground;	//윈도우의 배경색을 지정하기 위한 멤버.
