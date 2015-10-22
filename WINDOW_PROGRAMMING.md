@@ -193,4 +193,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UNIT iMessage, WPARAM wParam, LPARAM lParam)
 
 윈도우 프로시저 함수로 전달된 메시지의 종류를 확인하여 각각의 내용에 따라 프로그램에서 처리할 내용을 분기하여 처리하도록 구현. 예를 들어 키보드 입력에 대한 처리만 가능한 프로그램을 만든다면 키보드 입력 메시지만 처리하면 된다.
 
+======
+
+### MFC 프로그램의 종류
+
+> MFC 응용프로그램
+
 
