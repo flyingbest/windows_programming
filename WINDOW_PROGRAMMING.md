@@ -122,6 +122,7 @@ ShowWindow(hWnd, nDmdShow)
 hWnd : 화면에 보여줄 형태를 지정하고자 하는 윈도우의 핸들. CreateWindow() 함수를 사용하여 만들어진 윈도우의 경우 해당 함수의 리턴 값을 지정해 주면 됨.
 
 nCmdShow : 화면에 보여줄 형태을 지정하는 인자 값으로 다음과 같은 값들이 정의되어 있음.
+
 |윈도우 형태|설명|
 |-----------|----|
 |SW_HIDE|윈도우를 화면에서 감춘다.|
@@ -155,10 +156,41 @@ LPMSG lpMsg : 읽어온 메시지를 저장할 MSG 구조체 포인터를 지정
 
 HWND hWnd : 메시지가 전달되는 윈도우 핸들. 메시지를 생성할 때에 전달할 윈도우를 지정하여 생성할 수 있는데, 이 인자에 윈도우 핸들을 입력하면 해당 윈도우에 해당하는 메시지만 읽어드림.
 
-UNIT wMsgFilterMin, UNIT wMsgFilterMax : 
-	읽어올 메시지의 범위를 지정하기 위한 인수. 사용하지 않을 경우 0으로 입력.
-	```
-	BOOL TranslateMessage(CONST MSG*lpMsg);
-	```
+UNIT wMsgFilterMin, UNIT wMsgFilterMax : 읽어올 메시지의 범위를 지정하기 위한 인수. 사용하지 않을 경우 0으로 입력.
 
-	TranslateMessage 함수는 메시지의 종류를 확인하여 WM_KEYDOWN(키보드 입력) 메시지인지를 검사한 후 입력된 키가 문자키인 경우 WM_CHAR(문자열 입력) 메시지를 추가적으로 발생하는 역할을 담당. 즉, TranslateMessage 함수는 메시지의 종류가 문자열 입력 메시지인지를 검사하기 위해서 사용.
+```
+BOOL TranslateMessage(CONST MSG*lpMsg);
+```
+
+TranslateMessage 함수는 메시지의 종류를 확인하여 WM_KEYDOWN(키보드 입력) 메시지인지를 검사한 후 입력된 키가 문자키인 경우 WM_CHAR(문자열 입력) 메시지를 추가적으로 발생하는 역할을 담당. 즉, TranslateMessage 함수는 메시지의 종류가 문자열 입력 메시지인지를 검사하기 위해서 사용.
+
+```
+BOOL DispatchMessage(CONST MSG *lpMsg);
+```
+DispatchMessage 함수는 가져온 메시지를 윈도우의 메시지 처리 함수인 WndProc로 전달하는 역할.
+
+> 윈도우 프로시저
+
+메시지 루프에서 가공하여 전달되는 메시지를 처리하는 함수를 윈도우 프로시저(Window Procedure)라고 함. 메시지 루프에서 읽어들인 메시지를 전달하는 가공함수가 바로 윈도우 프로지저다.
+
+윈도우에서 생성되는 모든 메시지는 윈도우 프로시저로 전달된다. 윈도우 프로시저의 기본 골격은 다음과 같은 형식으로 구성.
+```
+LRESULT CALLBACK WndProc(HWND hWnd, UNIT iMessage, WPARAM wParam, LPARAM lParam){
+	switch(iMessage){
+		case 마우스메시지:
+			마우스 동작처리;
+			return 0;
+		case 키보드메시지:
+			키보드입력처리;
+			return 0;
+		case 시스템메시지:
+			시스템메시지처리;
+			return 0;
+	}
+	return(DefWindowProc(hWnd, iMessage, wParam, lParam);
+}
+```
+
+윈도우 프로시저 함수로 전달된 메시지의 종류를 확인하여 각각의 내용에 따라 프로그램에서 처리할 내용을 분기하여 처리하도록 구현. 예를 들어 키보드 입력에 대한 처리만 가능한 프로그램을 만든다면 키보드 입력 메시지만 처리하면 된다.
+
+
