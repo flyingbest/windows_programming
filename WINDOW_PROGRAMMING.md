@@ -199,4 +199,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UNIT iMessage, WPARAM wParam, LPARAM lParam)
 
 > MFC 응용프로그램
 
+MFC에서 응용 프로그램을 작성할 수 있도록 제공해주는 템플릿은 크게 SDI(Single Document Interface), MDI(Multiple Document Interface), Dialog 기반의 프로그램으로 분류.
+
+- SDI(Single Document Interface
+
+ SDI기반의 응용 프로그램은 한 번에 하나의 문서를 사용(작성, 편집 등)할 수 있는 형태의 프로그램. 메모장(notepad.exe)과 그림판(mspaint.exe) 등이 이에 속함.
+ SDI 기반의 프로그램은 하나의 문서만 관리하기 때문에 다른 문서를 사용하기 위해서는 동일한 프로그램을 여러 개 띄워서 사용하거나 현재 사용 중인 문서를 닫고, 새로운 문서를 사용해야 한다는 단점이 있음.
+
+- MDI(Multiple Document Interface
+
+ MDI 기반의 응용 프로그램은 한 번에 여러 개의 문서를 사용할 수 있는 프로그램. MFC 프로그램을 작성하기 위해서 사용되는 Visual Studio 프로그램이 MDI 기반의 프로그램.
+ MDI 기반의 프로그램은 여러 개의 문서들을 하나의 프로그램에서 사용할 수 있다는 장점이 있음.
+
+- Dialog
+
+ Dialog 기반의 응용 프로그램은 사용자와의 대화를 목적으로 사용되는 프로그램들을 작성하기 위해서 사용. 사용자는 Dialog 기반 프로그램에 배치되어 있는 컨트로를을 사용하여 프로그램에 데이터를 입력하고, 프로그램은 사용자로부터 입력된 데이터를 사용하여 처리된 결과물들을 만들어 낸다. 대표적인 프로그램은 계산기(clac.exe).
+
 
